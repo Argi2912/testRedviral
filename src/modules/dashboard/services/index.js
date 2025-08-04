@@ -1,0 +1,100 @@
+import { AppServices } from "@/utils/AppServices.js";
+import { useAuthStore } from "@/modules/auth/stores/store.js";
+import { Http } from "@/utils/AppServices";
+import { SERVICES_ROUTE } from "../config/config.js";
+import { parseToFormData } from "@/utils/Functions.js";
+
+export default {
+  makeTransaction: async (data) => {
+    let auth = useAuthStore();
+    let parsed_data = parseToFormData(data);
+    return await Http.post({
+      route: "/transactions",
+      data: parsed_data,
+      headers: {
+        Authorization: "Bearer " + auth.user.token,
+      },
+    });
+  },
+  create: async (data) => {
+    let auth = useAuthStore();
+    let parsed_data = parseToFormData(data);
+    return await Http.post({
+      route: "/" + SERVICES_ROUTE,
+      data: parsed_data,
+      headers: {
+        Authorization: "Bearer " + auth.user.token,
+      },
+    });
+  },
+  update: async (data, dashboard_id) => {
+    let auth = useAuthStore();
+    let parsed_data = parseToFormData(data);
+    return await Http.post({
+      route: "/" + SERVICES_ROUTE + "/update/" + dashboard_id,
+      data: parsed_data,
+      headers: {
+        Authorization: "Bearer " + auth.user.token,
+      },
+    });
+  },
+  delete: async (dashboard_id) => {
+    let auth = useAuthStore();
+    return await Http.delete({
+      route: "/" + SERVICES_ROUTE + "/" + dashboard_id,
+      headers: {
+        Authorization: "Bearer " + auth.user.token,
+      },
+    });
+  },
+  getMaxWorkers: async (type, items_per_page, current_page) => {
+    let auth = useAuthStore();
+    return await Http.get({
+      route: "/home/totalusersx",
+      query: {
+        p: type,
+        page: current_page,
+        per_page: items_per_page,
+      },
+      headers: {
+        Authorization: "Bearer " + auth.user.token,
+      },
+    });
+  },
+  fetchDashboardInfo: async (type, items_per_page, current_page) => {
+    let auth = useAuthStore();
+    return await Http.get({
+      route: "/home",
+      query: {
+        p: type,
+        page: current_page,
+        per_page: items_per_page,
+      },
+      headers: {
+        Authorization: "Bearer " + auth.user.token,
+      },
+    });
+  },
+  find: async (dashboard_id) => {
+    let auth = useAuthStore();
+    return await Http.get({
+      route: "/" + SERVICES_ROUTE + "/" + dashboard_id,
+      headers: {
+        Authorization: "Bearer " + auth.user.token,
+      },
+    });
+  },
+  paginate: async (items_per_page, current_page) => {
+    let auth = useAuthStore();
+    return await Http.get({
+      route: "/" + SERVICES_ROUTE,
+      query: {
+        per_page: items_per_page,
+        page: current_page,
+      },
+      headers: {
+        Authorization: "Bearer " + auth.user.token,
+      },
+    });
+  },
+};

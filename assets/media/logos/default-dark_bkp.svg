@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="80.58"
+   height="23.74"
+   viewBox="0 0 80.58 23.74"
+   version="1.1"
+   id="svg319"
+   sodipodi:docname="default_dark.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01, custom)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs323" />
+  <sodipodi:namedview
+     id="namedview321"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     showgrid="false"
+     inkscape:zoom="11.495531"
+     inkscape:cx="33.665257"
+     inkscape:cy="11.004277"
+     inkscape:window-width="1920"
+     inkscape:window-height="1020"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg319" />
+  <g
+     id="Capa_2"
+     data-name="Capa 2"
+     transform="matrix(0.95732721,0,0,0.95732721,-0.0018699,0.50653842)">
+    <g
+       id="Capa_1-2"
+       data-name="Capa 1-2"
+       transform="translate(0.002)">
+      <line
+         id="Line_1"
+         data-name="Line 1"
+         y2="11.564"
+         transform="translate(47.479,6.523)"
+         fill="none"
+         stroke="#071418"
+         stroke-miterlimit="22.93"
+         stroke-width="0.85"
+         x1="0"
+         y1="0"
+         x2="0" />
+      <line
+         id="Line_2"
+         data-name="Line 2"
+         y2="11.564"
+         transform="translate(47.541,6.523)"
+         fill="none"
+         stroke="#071418"
+         stroke-miterlimit="22.93"
+         stroke-width="0.85"
+         x1="0"
+         y1="0"
+         x2="0" />
+      <line
+         id="Line_3"
+         data-name="Line 3"
+         y2="11.564"
+         transform="translate(47.633,6.523)"
+         fill="none"
+         stroke="#071418"
+         stroke-miterlimit="22.93"
+         stroke-width="0.85"
+         x1="0"
+         y1="0"
+         x2="0" />
+      <path
+         id="Path_1"
+         data-name="Path 1"
+         d="m 11.918,23.122 3.323,-1.622 5.928,-2.877 0.713,-4.866 -4.851,-6.578 h 5.21 L 22.682,7.846 22.856,6.308 17.472,3.159 12.206,0 6.2,2.954 3.585,4.246 C 2.047,4.995 2.285,4.682 1.611,6.154 1.15,7.143 0.693,8.138 0.232,9.128 -0.178,10 0,10.256 0.314,11.066 l 5.323,10.513 a 1.661,1.661 0 0 0 0.79,0.779 L 9.3,23.384 c 1.5,0.513 1.087,0.513 2.631,-0.267"
+         transform="translate(0.008)"
+         fill="#008d79" />
+      <path
+         id="Path_2"
+         data-name="Path 2"
+         d="m 145.438,15.278 -1.785,2.322 h -6.313 c -0.338,0 -0.513,0.118 -0.513,0.359 0,0.241 0.169,0.359 0.513,0.359 h 4.543 a 4.466,4.466 0 0 1 2.708,0.79 2.6,2.6 0 0 1 1.128,2.179 2.523,2.523 0 0 1 -1.138,2.143 4.456,4.456 0 0 1 -2.7,0.779 h -8.171 l 1.785,-2.3 h 6.389 a 2,2 0 0 0 0.779,-0.149 q 0.446,-0.185 0.446,-0.513 0,-0.328 -0.446,-0.513 a 2.261,2.261 0 0 0 -0.779,-0.123 h -4.543 a 4.384,4.384 0 0 1 -2.528,-0.692 2.333,2.333 0 0 1 0,-3.954 4.384,4.384 0 0 1 2.528,-0.692 z"
+         transform="translate(-65.139,-7.437)"
+         fill="#ffffff" />
+      <path
+         id="Path_3"
+         data-name="Path 3"
+         d="m 121.073,20.156 q 0,4.061 -5.569,4.061 h -0.585 q -5.569,0 -5.569,-4.061 V 15.29 h 2.759 v 4.866 a 1.472,1.472 0 0 0 1.067,1.538 8.533,8.533 0 0 0 2.328,0.2 4.749,4.749 0 0 0 1.99,-0.3 1.461,1.461 0 0 0 0.805,-1.461 V 15.29 h 2.774 z"
+         transform="translate(-53.271,-7.449)"
+         fill="#ffffff" />
+      <path
+         id="Path_4"
+         data-name="Path 4"
+         d="m 78.013,20.156 q 0,4.061 -5.569,4.061 h -0.585 q -5.569,0 -5.569,-4.061 V 15.29 h 2.759 v 4.866 a 1.472,1.472 0 0 0 1.067,1.538 8.533,8.533 0 0 0 2.328,0.2 4.749,4.749 0 0 0 1.99,-0.3 1.461,1.461 0 0 0 0.805,-1.461 V 15.29 h 2.774 z"
+         transform="translate(-32.292,-7.449)"
+         fill="#ffffff" />
+      <path
+         id="Path_5"
+         data-name="Path 5"
+         d="m 93.034,21.915 v 2.3 H 90.27 V 15.29 h 2.764 z"
+         transform="translate(-43.981,-7.449)"
+         fill="#008d79" />
+      <path
+         id="Path_6"
+         data-name="Path 6"
+         d="m 95.67,28.21 v 2.3 h 4.738 l 1.661,-2.3 z"
+         transform="translate(-46.611,-13.744)"
+         fill="#071418" />
+      <path
+         id="Path_7"
+         data-name="Path 7"
+         d="M 21.459,15.56 20.6,19.831 10,25.092 4.06,13.124 14.07,8.16 l 3.62,2.108 -8.374,4.117 0.81,1.436 4.431,-2.19 1.436,2.738 -4.518,2.277 0.708,1.513 z"
+         transform="translate(-1.979,-3.976)"
+         fill="#ffffff" />
+      <path
+         id="Path_8"
+         data-name="Path 8"
+         d="m 24.31,16.81 3.446,0.513 a 0.57,0.57 0 0 1 0.5,0.928 l -1.492,3.113 -0.564,-1.052 1.026,-2.123 -2.343,-0.318 z"
+         transform="translate(-11.84,-8.19)"
+         fill="#ffffff" />
+      <path
+         id="Path_9"
+         data-name="Path 9"
+         d="M 50.912,15.29 44.9,23.346 a 2.117,2.117 0 0 1 -1.538,1.026 2.058,2.058 0 0 1 -1.538,-1.026 L 36,15.29 h 3.441 l 3.995,5.523 4.01,-5.523 z"
+         transform="translate(-17.535,-7.449)"
+         fill="#ffffff" />
+    </g>
+  </g>
+</svg>
