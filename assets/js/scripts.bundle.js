@@ -6,7 +6,8 @@
 var KTComponents = function () {
     // Public methods
     return {
-        init: function () {
+        init:  function () {
+            //await new Promise(resolve => setTimeout(resolve, 2000))
             KTApp.init();
 			KTDrawer.init();
 			KTMenu.init();

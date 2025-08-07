@@ -17,6 +17,7 @@
             <div
               class="btn btn-icon btn-active-color-primary w-35px h-35px"
               id="kt_app_sidebar_mobile_toggle"
+              
             >
               <!--begin::Svg Icon | path: icons/duotune/abstract/abs015.svg-->
               <span class="svg-icon svg-icon-1">
@@ -7910,16 +7911,75 @@ import {
 
 //import TopOptions from "./top_options.js";
 import { useAuthStore } from "@/modules/auth/stores/store.js";
+import { onMounted } from 'vue';
 
 const auth = useAuthStore();
 const router = useRouter();
 const route = useRoute();
+
 
 const pushToDashboard = () => {
   if (auth.user.role == 1) return router.push({ name: "admin-dashboard" });
   if (auth.user.role == 2) return router.push({ name: "clients-dashboard" });
   else router.push({ name: "workers-dashboard" });
 };
+
+const toggleSidebar = () => {
+    const toggleElement = document.getElementById('kt_app_sidebar_toggle'); 
+    const bodyElement = document.getElementById('kt_app_body');
+
+    const isMinimizedOn = bodyElement.hasAttribute('data-kt-app-sidebar-minimize') &&  bodyElement.getAttribute('data-kt-app-sidebar-minimize') === 'on';
+    const isActiveClass = toggleElement.classList.contains('active');
+
+    if (isMinimizedOn && isActiveClass) {
+        bodyElement.removeAttribute('data-kt-app-sidebar-minimize');
+        toggleElement.classList.remove('active');
+        console.log('Ambas condiciones se cumplen: Atributo y clase removidos.');
+    } else {
+        bodyElement.setAttribute('data-kt-app-sidebar-minimize', 'on');
+        toggleElement.classList.add('active');
+        console.log('Al menos una condición no se cumple: Atributo y clase agregados.');
+    }
+
+};
+
+const toggleMobileSidebar = () => {
+  const toggleElement = document.getElementById('kt_app_sidebar_mobile_toggle'); 
+  const bodyElement = document.getElementById('kt_app_body');
+  const sidebarElement = document.getElementById('kt_app_sidebar');
+
+  const isDrawer = bodyElement.hasAttribute('data-kt-drawer-app-sidebar') &&  bodyElement.getAttribute('data-kt-drawer-app-sidebar') === 'on';
+  const hasDrawer = bodyElement.hasAttribute('data-kt-drawer') &&  bodyElement.getAttribute('data-kt-drawer') === 'on';
+
+  if(isDrawer && hasDrawer){
+    bodyElement.removeAttribute('data-kt-drawer-app-sidebar');
+    bodyElement.removeAttribute('data-kt-drawer');
+    toggleElement.classList.remove('active');
+    sidebarElement.classList.remove('drawer-on');
+
+    console.log('Sidebar estaba Abierta.');
+  } else {
+    bodyElement.setAttribute('data-kt-drawer-app-sidebar', 'on');
+    bodyElement.setAttribute('data-kt-drawer', 'on');
+    toggleElement.classList.add('active');
+    sidebarElement.classList.add('drawer-on');
+
+    console.log('Sidebar estaba Cerrada.');
+
+  }
+
+  console.log(bodyElement);
+};
+
+
+
+onMounted(() => {
+  if (typeof KTComponents !== 'undefined' && typeof KTComponents.init === 'function') {
+    KTComponents.init();
+  } else if (typeof KTToggle !== 'undefined' && typeof KTToggle.init === 'function') {
+    KTToggle.init();
+  }
+});
 
 let options = ref([]);
 let top_options = ref([]);

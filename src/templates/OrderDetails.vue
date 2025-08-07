@@ -49,7 +49,6 @@
                       </a>
                     </div>
                     <!--end::Avatar-->
-                    <!-- test -->
                     <!--begin::Name-->
                     <a
                       @click="onClick(data)"
