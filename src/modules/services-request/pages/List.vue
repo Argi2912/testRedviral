@@ -199,7 +199,7 @@
                             </div>
                           </div>
                         </td>
-                        <td>{{ cutText(item.items[0].service.photo, 30) }}</td>
+                        <td>{{ cutText(item.account.url, 30) }}</td>
                         <td v-if="auth_store.getProperty('user').role !== 2">
                           <div class="d-flex align-items-center">
                             <div class="d-flex justify-content-start flex-column">
@@ -420,8 +420,8 @@
         type_search: "like",
       });
 
-      await services_request_store.addSearchFilter({
-        field: "service.photo", 
+       await services_request_store.addSearchFilter({
+        field: "account.url",
         value: search.value,
         type_search: "like",
       });
