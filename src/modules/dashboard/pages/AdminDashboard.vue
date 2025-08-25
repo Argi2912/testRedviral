@@ -144,89 +144,11 @@
       </div>
     </div>
     <div class="row g-5 g-xl-10">
-      <div class="col-xl-4 mb-xl-10">
-        <div class="card h-xl-100">
-          <div class="card-header border-0 pt-5">
-            <h3 class="card-title align-items-start flex-column">
-              <span class="card-label fw-bold text-dark"
-                >Estadísticas de alcance</span
-              >
-
-              <span class="text-muted mt-1 fw-semibold fs-7"
-                >({{
-                  dashboard_store.getItem("dashboard", "admin_info").num_worker
-                }}) trabajadores</span
-              >
-            </h3>
-          </div>
-
-          <div class="card-body pt-6">
-            <ShowResults
-              :results="Object.keys(workers_by_country).length !== 0"
-              show-image
-              width="200"
-              text="No se encontraron resultados"
-            >
-              <span
-                v-for="(country, i) in workers_by_country"
-                :key="'country_' + i"
-              >
-                <div class="d-flex flex-stack">
-                  <div class="symbol symbol-40px me-4">
-                    <div
-                      class="symbol-label fs-2 fw-semibold bg-danger text-inverse-danger"
-                    >
-                      {{ i[0] }}
-                    </div>
-                  </div>
-
-                  <div
-                    class="d-flex align-items-center flex-row-fluid flex-wrap"
-                  >
-                    <div class="flex-grow-1 me-2">
-                      <a class="text-gray-800 text-hover-primary fs-6 fw-bold"
-                        >{{ i }} ({{ country.length }}
-                        {{
-                          country.length == 1 ? "trabajador" : "trabajadores"
-                        }})</a
-                      >
-                    </div>
-                  </div>
-                </div>
-                <div class="separator separator-dashed my-4"></div>
-              </span>
-              <div style="float: right">
-                <Paginator
-                  v-if="
-                    Math.ceil(
-                      dashboard_store.items.dashboard.paginator.total_pages
-                    ) > 1
-                  "
-                  :key="dashboard_store.items.dashboard.paginator.key"
-                  @onChangePage="onChangePage"
-                  :items-per-page="
-                    dashboard_store.items.dashboard.paginator.items_per_page
-                  "
-                  :max-buttons="5"
-                  :total-items="
-                    dashboard_store.items.dashboard.paginator.total_items
-                  "
-                  :total-pages="
-                    Math.ceil(
-                      dashboard_store.items.dashboard.paginator.total_pages
-                    )
-                  "
-                  :current-page="
-                    dashboard_store.items.dashboard.paginator.current_page
-                  "
-                />
-              </div>
-            </ShowResults>
-          </div>
-        </div>
+      <div class="col-xl-5 mb-xl-10">
+        <WorkersByCountry />
       </div>
 
-      <div class="col-xl-8 mb-5 mb-xl-10">
+      <div class="col-xl-7 mb-5 mb-xl-10">
         <div class="card card-flush h-xl-100">
           <div class="card-header pt-5">
             <h3 class="card-title align-items-start flex-column">
@@ -301,6 +223,7 @@
 import { useDashboardStore } from "../stores/index.js";
 import WithdrawForm from "./WithdrawForm.vue";
 import TasksManagement from "../components/TasksManagement.vue";
+import WorkersByCountry from "../components/WorkersByCountry.vue";
 import Paginator from "@/components/paginator/Paginator.vue";
 import { parseDate, cutText } from "@/utils/Functions.js";
 import { inject, onMounted, ref } from "vue-demi";

@@ -3,6 +3,7 @@ import SignUp from "../views/SignUp.vue";
 import ForgotPassword from "../views/ForgotPassword.vue";
 import VerifyCode from "../views/ForgotPassword.vue";
 import VerifyTwoFa from "../views/ForgotPassword.vue";
+import ResetPassword from "../views/ResetPassword.vue"
 
 export default [
   {
@@ -42,5 +43,10 @@ export default [
     path: "/verify-twofa",
     name: "verify-twofa",
     component: VerifyTwoFa,
+  },
+  {
+    path: '/reset-password',
+    name: 'reset-password',
+    component: ResetPassword, 
   },
 ];

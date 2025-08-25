@@ -45,7 +45,7 @@
           <!--end::sidebar mobile toggle-->
           <!--begin::Mobile logo-->
           <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0">
-            <a class="d-lg-none clickable">
+            <a class="d-lg-none clickable" @click="pushToDashboard">
               <img
                 alt="Logo"
                 src="/assets/media/logos/default-small.svg"

@@ -216,5 +216,41 @@ export const useAuthStore = defineStore({
         }
       }
     },
+
+    async requestPasswordRecovery(email) {
+      let notyf = useNotyf();
+      const response = await LoginService.requestPasswordRecovery(email);
+        
+      if (response.success) {
+        notyf.success("Se ha enviado un correo electrónico para restablecer tu contraseña. Por favor, revisa tu bandeja de entrada.");
+        return true;
+      } else {
+        if (response.status === 404) {
+          notyf.error("El correo electrónico no está registrado.");
+        } else if (response.data && response.data.message) {
+          notyf.error(response.data.message);
+        } else {
+          notyf.error("Ocurrió un error al intentar recuperar la contraseña.");
+        }
+        return false;
+      }
+    },
+  async resetPasswordWithCode(code, newPassword) {
+        const notyf = useNotyf();
+        const response = await LoginService.resetPassword(code, newPassword);
+
+        if (response.success) {
+          notyf.success("Tu contraseña ha sido restablecida exitosamente. Ahora puedes iniciar sesión.");
+          return true;
+        } else {
+          if (response.status === 422 && response.data && response.data.message) {
+          } else if (response.status === 500) {
+            notyf.error("Ocurrió un error en el servidor. Por favor, intenta de nuevo más tarde.");
+          } else {
+            notyf.error("Ocurrió un error al restablecer la contraseña. Por favor, verifica el código y la nueva contraseña, e intenta de nuevo.");
+          }
+          return false;
+        }
+      },
   },
 });

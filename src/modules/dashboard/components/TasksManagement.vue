@@ -121,7 +121,7 @@
           <div class="d-flex flex-column flex-sm-row d-grid gap-2">
             <a
               @click="router.push({ name: 'admin-tasks' })"
-              v-if="route.name !== 'clients-dashboard'"
+              v-if="route.name === 'admin-dashboard'"
               class="btn btn-success flex-shrink-0 me-lg-2"
               >Ver tareas</a
             >

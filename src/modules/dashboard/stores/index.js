@@ -17,6 +17,11 @@ export const useDashboardStore = defineStore({
     active_page: "",
     modal: "",
     modal_title: "",
+    userStats: {
+      data: null, 
+      loading: false,
+      error: null,
+    },
     reload_dashboard_info: 1,
     items: {
       dashboard: {
@@ -255,6 +260,20 @@ export const useDashboardStore = defineStore({
     },
     async getMaxWorkers() {
       return this.fetchMaxWorkers();
+    },
+    async fetchUserStats() {
+       this.userStats.loading = true;
+      this.userStats.error = null;
+      try {
+        const response = await DashboardServices.fetchUserStats();
+        this.userStats.data = response.data;
+        console.log('Datos del store actualizados:', this.userStats.data);
+      } catch (err) {
+        console.error("Error fetching user stats:", err);
+        this.userStats.error = "No se pudieron cargar las estadísticas de usuarios.";
+      } finally {
+        this.userStats.loading = false;
+      }
     },
     async init(route) {
       await this.cleanSearchFilter();

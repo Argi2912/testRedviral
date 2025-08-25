@@ -405,26 +405,28 @@
     await services_request_store.cleanSearchFilter();
 
     if (search.value !== "") {
-
-      
-      await services_request_store.addSearchFilter({
-        field: "uuid",
-        value: search.value,
-        type_search: "like",
-      });
-
-     
-      await services_request_store.addSearchFilter({
-        field: "service.name", 
-        value: search.value,
-        type_search: "like",
-      });
-
-       await services_request_store.addSearchFilter({
-        field: "account.url",
-        value: search.value,
-        type_search: "like",
-      });
+      await Promise.all([
+        services_request_store.addSearchFilter({
+          field: "uuid",
+          value: search.value,
+          type_search: "like",
+        }),
+        services_request_store.addSearchFilter({
+          field: "service.name",
+          value: search.value,
+          type_search: "like",
+        }),
+        services_request_store.addSearchFilter({
+          field: "account.url",
+          value: search.value,
+          type_search: "like",
+        }),
+        services_request_store.addSearchFilter({
+          field: "account.name",
+          value: search.value,
+          type_search: "like",
+        }),
+      ]);
     }
 
     services_request_store.setPagination({

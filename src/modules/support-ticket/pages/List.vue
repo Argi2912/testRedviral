@@ -18,84 +18,45 @@
         id="kt_app_toolbar"
         class="app-toolbar align-items-center justify-content-between py-2 py-lg-6 mb-6"
       >
-        <!--begin::Toolbar wrapper-->
         <div
           class="d-flex flex-grow-1 flex-stack flex-wrap gap-2 mb-n10"
           id="kt_toolbar"
         >
-          <!--begin::Page title-->
           <div
             class="page-title d-flex flex-column justify-content-center me-3"
           >
-            <!--begin::Title-->
             <h1
               class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center me-3 my-0"
             >
               Ticket de soporte
             </h1>
-            <!--end::Title-->
-            <!--begin::Breadcrumb-->
             <ul
               class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1"
             >
-              <!--begin::Item-->
               <li class="breadcrumb-item text-muted">
                 <a class="text-muted text-hover-primary">Ticket de soporte</a>
               </li>
-              <!--end::Item-->
-
-              <!--begin::Item-->
               <li class="breadcrumb-item">
                 <span class="bullet bg-gray-400 w-5px h-2px"></span>
               </li>
-              <!--end::Item-->
-              <!--begin::Item-->
               <li class="breadcrumb-item text-dark">Lista</li>
-              <!--end::Item-->
             </ul>
-            <!--end::Breadcrumb-->
           </div>
-          <!--end::Page title-->
-          <!--begin::Actions-->
-
-          <!--end::Actions-->
         </div>
-        <!--end::Toolbar wrapper-->
       </div>
-      <!--begin::Inbox App - Messages -->
       <div class="d-flex flex-column flex-lg-row">
-        <!--begin::Sidebar-->
         <div
-          class="d-none d-lg-flex flex-column flex-lg-row-auto w-100 w-lg-275px"
-          data-kt-drawer="true"
-          data-kt-drawer-name="inbox-aside"
-          data-kt-drawer-activate="{default: true, lg: false}"
-          data-kt-drawer-overlay="true"
-          data-kt-drawer-width="225px"
-          data-kt-drawer-direction="start"
-          data-kt-drawer-toggle="#kt_inbox_aside_toggle"
+          class="d-flex flex-column flex-lg-row-auto w-100 w-lg-275px mb-5 mb-lg-0"
         >
-          <!--begin::Sticky aside-->
-          <div
-            class="card card-flush mb-0"
-            data-kt-sticky="false"
-            data-kt-sticky-name="inbox-aside-sticky"
-            data-kt-sticky-offset="{default: false, xl: '100px'}"
-            data-kt-sticky-width="{lg: '275px'}"
-            data-kt-sticky-left="auto"
-            data-kt-sticky-top="100px"
-            data-kt-sticky-animation="false"
-            data-kt-sticky-zindex="95"
-          >
-            <!--begin::Aside content-->
+          <div class="card card-flush">
             <div class="card-body">
-              <!--begin::Button-->
               <a
                 v-if="auth_store.getProperty('user').role != 1"
                 @click="createSupportTicket"
                 class="btn btn-primary fw-bold w-100 mb-8"
-                ><span class="svg-icon svg-icon-muted svg-icon-1hx"
-                  ><svg
+              >
+                <span class="svg-icon svg-icon-muted svg-icon-1hx">
+                  <svg
                     width="24"
                     height="24"
                     viewBox="0 0 24 24"
@@ -117,24 +78,20 @@
                       d="M8.82343 12.0064L8.08852 14.3348C7.8655 15.0414 8.46151 15.7366 9.19388 15.6242L11.8974 15.2092C12.4642 15.1222 12.6916 14.4278 12.2861 14.0223L9.98595 11.7221C9.61452 11.3507 8.98154 11.5055 8.82343 12.0064Z"
                       fill="currentColor"
                     />
-                  </svg> </span
-                >Redactar</a
-              >
-              <!--end::Button-->
-              <!--begin::Menu-->
+                  </svg>
+                </span>
+                Redactar
+              </a>
               <div
                 class="menu menu-column menu-rounded menu-state-bg menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary"
               >
-                <!--begin::Menu item-->
                 <div class="menu-item mb-3">
-                  <!--begin::Inbox-->
                   <span
                     class="menu-link"
                     :class="[active_option == 'all' && 'active']"
                     @click="selectOption('all')"
                   >
                     <span class="menu-icon">
-                      <!--begin::Svg Icon | path: icons/duotune/communication/com010.svg-->
                       <span class="svg-icon svg-icon-2 me-3">
                         <svg
                           width="24"
@@ -154,24 +111,17 @@
                           ></path>
                         </svg>
                       </span>
-                      <!--end::Svg Icon-->
                     </span>
                     <span class="menu-title fw-bold">Todos</span>
-                    <!-- <span class="badge badge-light-success">3</span> -->
                   </span>
-                  <!--end::Inbox-->
                 </div>
-                <!--end::Menu item-->
-                <!--begin::Menu item-->
                 <div class="menu-item mb-3">
-                  <!--begin::Marked-->
                   <span
                     class="menu-link"
                     :class="[active_option == 'Abierto' && 'active']"
                     @click="selectOption('Abierto')"
                   >
                     <span class="menu-icon">
-                      <!--begin::Svg Icon | path: icons/duotune/abstract/abs024.svg-->
                       <span class="svg-icon svg-icon-2 me-3">
                         <svg
                           width="24"
@@ -191,23 +141,17 @@
                           ></path>
                         </svg>
                       </span>
-                      <!--end::Svg Icon-->
                     </span>
                     <span class="menu-title fw-bold">Sin contestar</span>
                   </span>
-                  <!--end::Marked-->
                 </div>
-                <!--end::Menu item-->
-                <!--begin::Menu item-->
                 <div class="menu-item mb-3">
-                  <!--begin::Draft-->
                   <span
                     class="menu-link"
                     :class="[active_option == 'Contestado' && 'active']"
                     @click="selectOption('Contestado')"
                   >
                     <span class="menu-icon">
-                      <!--begin::Svg Icon | path: icons/duotune/general/gen009.svg-->
                       <span class="svg-icon svg-icon-2 me-3">
                         <svg
                           width="24"
@@ -227,24 +171,17 @@
                           ></path>
                         </svg>
                       </span>
-                      <!--end::Svg Icon-->
                     </span>
                     <span class="menu-title fw-bold">Contestados</span>
-                    <!-- <span class="badge badge-light-warning">5</span> -->
                   </span>
-                  <!--end::Draft-->
                 </div>
-                <!--end::Menu item-->
-                <!--begin::Menu item-->
                 <div class="menu-item mb-3">
-                  <!--begin::Sent-->
                   <span
                     class="menu-link"
                     :class="[active_option == 'Cerrado' && 'active']"
                     @click="selectOption('Cerrado')"
                   >
                     <span class="menu-icon">
-                      <!--begin::Svg Icon | path: icons/duotune/general/gen016.svg-->
                       <span class="svg-icon svg-icon-2 me-3">
                         <svg
                           width="24"
@@ -268,39 +205,13 @@
                           />
                         </svg>
                       </span>
-                      <!--end::Svg Icon-->
                     </span>
                     <span class="menu-title fw-bold">Cerrados</span>
                   </span>
-                  <!--end::Sent-->
                 </div>
-                <!--end::Menu item-->
               </div>
-              <!--end::Menu-->
-              <!--begin::Menu-->
-              <div
-                class="menu menu-column menu-rounded menu-state-bg menu-state-title-primary"
-              ></div>
-              <!--end::Menu-->
-            </div>
-            <!--end::Aside content-->
-          </div>
-          <!--end::Sticky aside-->
-        </div>
-        <!--end::Sidebar-->
-        <!--begin::Content-->
-        <div class="flex-lg-row-fluid ms-lg-7 ms-xl-10">
-          <!--begin::Card-->
-          <div class="card">
-            <div class="card-header align-items-center py-5 gap-2 gap-md-5">
-              <!--begin::Actions-->
-              <div class="d-flex flex-wrap gap-2"></div>
-              <!--end::Actions-->
-              <!--begin::Actions-->
-              <div class="d-flex align-items-center flex-wrap gap-2">
-                <!--begin::Search-->
+              <div class="mt-8">
                 <div class="d-flex align-items-center position-relative">
-                  <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
                   <span class="svg-icon svg-icon-2 position-absolute ms-4">
                     <svg
                       width="24"
@@ -325,7 +236,48 @@
                       ></path>
                     </svg>
                   </span>
-                  <!--end::Svg Icon-->
+                  <input
+                    type="text"
+                    class="form-control form-control-solid ps-12"
+                    placeholder="Buscar"
+                    v-model="search"
+                    @keyup="paginateBySearch"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex-lg-row-fluid ms-lg-7 ms-xl-10">
+          <div class="card">
+            <div class="card-header align-items-center py-5 gap-2 gap-md-5">
+              <div class="d-flex flex-wrap gap-2"></div>
+              <div class="d-flex align-items-center flex-wrap gap-2">
+                <div class="d-flex align-items-center position-relative">
+                  <span class="svg-icon svg-icon-2 position-absolute ms-4">
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <rect
+                        opacity="0.5"
+                        x="17.0365"
+                        y="15.1223"
+                        width="8.15546"
+                        height="2"
+                        rx="1"
+                        transform="rotate(45 17.0365 15.1223)"
+                        fill="currentColor"
+                      ></rect>
+                      <path
+                        d="M11 19C6.55556 19 3 15.4444 3 11C3 6.55556 6.55556 3 11 3C15.4444 3 19 6.55556 19 11C19 15.4444 15.4444 19 11 19ZM11 5C7.53333 5 5 7.53333 5 11C5 14.4667 7.53333 17 11 17C14.4667 17 17 14.4667 17 11C17 7.53333 14.4667 5 11 5Z"
+                        fill="currentColor"
+                      ></path>
+                    </svg>
+                  </span>
                   <input
                     type="text"
                     class="form-control form-control-sm form-control-solid mw-100 min-w-125px min-w-lg-150px min-w-xxl-200px ps-12"
@@ -334,13 +286,9 @@
                     @keyup="paginateBySearch"
                   />
                 </div>
-                <!--end::Search-->
+                </div>
               </div>
-              <!--end::Actions-->
-            </div>
             <div class="card-body">
-              <!--begin::Table-->
-
               <Hoping
                 :loading="
                   support_ticket_store.items.support_ticket.loading_list
@@ -356,7 +304,6 @@
                     <table
                       class="table table-hover table-row-dashed fs-6 gy-5 my-3 dataTable no-footer"
                     >
-                      <!--begin::Table body-->
                       <tbody>
                         <tr
                           class="odd"
@@ -370,7 +317,6 @@
                             v-if="auth_store.getProperty('user').role == 1"
                           >
                             <a class="d-flex align-items-center text-dark">
-                              <!--begin::Avatar-->
                               <Avatar
                                 v-if="ticket.user.photo"
                                 :picture="ticket.user.photo"
@@ -385,25 +331,17 @@
                                   {{ ticket.user.name[0] }}
                                 </div>
                               </div>
-                              <!--end::Avatar-->
-                              <!--begin::Name-->
                               <span class="fw-semibold">{{
                                 ticket.user.name + " " + ticket.user.lastname
                               }}</span>
-                              <!--end::Name-->
-                            </a>
+                              </a>
                           </td>
-                          <!--end::Author-->
-                          <!--begin::Title-->
                           <td class="ps-9">
                             <div class="text-dark mb-1">
-                              <!--begin::Heading-->
                               <a class="text-dark">
                                 <span class="fw-bold">{{ ticket.title }}</span>
                               </a>
-                              <!--end::Heading-->
-                            </div>
-                            <!--begin::Badges-->
+                              </div>
                             <span>
                               <div
                                 class="badge badge-light-warning"
@@ -422,21 +360,16 @@
                               </div>
                             </span>
 
-                            <!--end::Badges-->
-                          </td>
-                          <!--end::Title-->
+                            </td>
                           <td><b>Prioridad:</b> {{ ticket.priority }}</td>
-                          <!--begin::Date-->
                           <td class="w-100px text-end fs-7 pe-9">
                             <span class="fw-semibold">{{
                               parseDate(ticket.created_at)
                             }}</span>
                           </td>
-                          <!--end::Date-->
-                        </tr>
+                          </tr>
                       </tbody>
-                      <!--end::Table body-->
-                    </table>
+                      </table>
                   </div>
                   <div class="row mb-3">
                     <div class="col">
@@ -496,18 +429,14 @@
                 </ShowResults>
               </Hoping>
 
-              <!--end::Table-->
-            </div>
+              </div>
           </div>
-          <!--end::Card-->
         </div>
-        <!--end::Content-->
       </div>
-      <!--end::Inbox App - Messages -->
     </div>
-    <!--end::Content container-->
   </div>
 </template>
+
 <script setup>
 import { useSupportTicketStore } from "../stores/index.js";
 import SupportTicketForm from "../pages/SupportTicketForm.vue";

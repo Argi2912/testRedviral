@@ -47,6 +47,15 @@ export default {
       },
     });
   },
+  fetchUserStats: async() => {
+    let auth = useAuthStore();
+    return await Http.get({
+      route: "/" + SERVICES_ROUTE + "/getUserStats",      
+      headers: {
+        Authorization: "Bearer " + auth.user.token,
+      },
+    });
+  },
   getMaxWorkers: async (type, items_per_page, current_page) => {
     let auth = useAuthStore();
     return await Http.get({

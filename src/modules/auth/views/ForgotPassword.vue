@@ -1,54 +1,42 @@
-  <template>
+<template>
   <AuthLayout>
     <form
       class="form w-100"
       novalidate="novalidate"
       id="kt_password_reset_form"
-      data-kt-redirect-url="../../demo7/dist/authentication/layouts/corporate/new-password.html"
       action="#"
+      @submit.prevent="recoverPassword"
     >
-      <!--begin::Heading-->
       <div class="text-center mb-10">
-        <!--begin::Title-->
         <h1 class="text-dark fw-bolder mb-3">¿Olvidaste tu contraseña?</h1>
-        <!--end::Title-->
-        <!--begin::Link-->
         <div class="text-gray-500 fw-semibold fs-6">
           Ingresa el email de tu cuenta.
         </div>
-        <!--end::Link-->
       </div>
-      <!--begin::Heading-->
-      <!--begin::Input group=-->
       <div class="fv-row mb-8">
-        <!--begin::Email-->
         <input
-          type="text"
+          type="email"
           placeholder="Email"
-          v-model="form_state.email"
+          v-model="form.email"
           autocomplete="off"
           class="form-control bg-transparent"
+          :class="{ 'is-invalid': !isEmailValid && form.email }"
         />
-        <!--end::Email-->
+        <div v-if="!isEmailValid && form.email" class="invalid-feedback">
+          Por favor, ingresa una dirección de correo válida.
+        </div>
       </div>
-      <!--begin::Actions-->
       <div class="d-flex flex-wrap justify-content-center pb-lg-0">
         <button
-          type="button"
+          type="submit"
           class="btn btn-primary me-4"
-          @click="recoverPassword()"
+          :disabled="isLoading || !isFormValid"
         >
-          <!--begin::Indicator label-->
-          <span class="indicator-label">Enviar</span>
-          <!--end::Indicator label-->
-          <!--begin::Indicator progress-->
-          <span class="indicator-progress"
-            >Please wait...
-            <span
-              class="spinner-border spinner-border-sm align-middle ms-2"
-            ></span
-          ></span>
-          <!--end::Indicator progress-->
+          <span v-if="!isLoading" class="indicator-label">Enviar</span>
+          <span v-else class="indicator-progress">
+            Por favor, espera...
+            <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+          </span>
         </button>
         <a
           href="#"
@@ -57,23 +45,54 @@
           >Regresar</a
         >
       </div>
-      <!--end::Actions-->
     </form>
   </AuthLayout>
 </template>
 
 <script setup>
-import { reactive } from "vue-demi";
+import { reactive, ref, computed } from "vue";
 import { useRouter } from "vue-router";
 import { useAuthStore } from "../stores/store.js";
 import AuthLayout from "../../../layouts/auth-layout/AuthLayout.vue";
+import useNotyf from "@/composables/useNotyf.js";
+
 const store = useAuthStore();
 const router = useRouter();
-let form_state = reactive({
+const { success, error } = useNotyf();
+
+const form = reactive({
   email: "",
 });
 
-const recoverPassword = () => {
-  store.recover_password(form_state);
+const isLoading = ref(false);
+
+const isEmailValid = computed(() => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(form.email);
+});
+
+const isFormValid = computed(() => {
+  return isEmailValid.value;
+});
+
+const recoverPassword = async () => {
+  if (!isFormValid.value) {
+    error("Por favor, ingresa un correo electrónico válido.");
+    return;
+  }
+
+  isLoading.value = true;
+
+  // Llama directamente a la función del store que ya maneja los mensajes
+  const successResult = await store.requestPasswordRecovery(form.email);
+
+  // La lógica de redirección solo si la solicitud fue exitosa
+  if (successResult) {
+    const emailForRedirect = form.email;
+    form.email = '';
+    router.push({ name: 'reset-password', query: { email: emailForRedirect } });
+  }
+
+  isLoading.value = false;
 };
 </script>

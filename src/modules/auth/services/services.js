@@ -83,4 +83,39 @@ export default {
       },
     });
   },
+  requestPasswordRecovery: async (email) => {
+    try {
+      const response = await Http.post({
+        route: "/recovery/new",
+        data: {
+          email: email,
+        },
+      });
+      return { status: response.status, data: response.data, success: true };
+    } catch (error) {
+      if (error.response) {
+        return { status: error.response.status, data: error.response.data, success: false };
+      } else {
+        return { status: 500, data: { message: "Error de red" }, success: false };
+      }
+    }
+  },
+  resetPassword: async (code, newPassword) => {
+      try {
+        const response = await Http.post({
+          route: "/recovery/update", 
+          data: {
+            key: code,
+            password: newPassword,
+          },
+        });
+        return { status: response.status, data: response.data, success: true };
+      } catch (error) {
+        if (error.response) {
+          return { status: error.response.status, data: error.response.data, success: false };
+        } else {
+          return { status: 500, data: { message: "Error de red" }, success: false };
+        }
+      }
+    },
 };
